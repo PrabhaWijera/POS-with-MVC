@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="A simple POS system built with BootStrap 5." property="og:description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>POS.🛒</title>
+    <!--Icon.👇-->
+    <link href=""
+          rel="icon" type="image/x-icon">
+    <!--CCS.👇-->
+    <link href="CSS/minifiedcss.css" rel="stylesheet">
+    <!--Normalize CCS.👇-->
+    <link href="CSS/normalize.css" rel="stylesheet">
+    <!--BootStrap 5. (CCS.)👇-->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" rel="stylesheet">
+
+    <!--AOS - Animate on scroll library.(https://github.com/michalsnik/aos) or (https://michalsnik.github.io/aos/)👇-->
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet"/>
+    <!--CSS animation library. (https://Animate.style)👇-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <!--Google font - Tilt warp.(https://fonts.google.com)👇-->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
+    <!--JQuery.👇-->
+    <script crossorigin="anonymous"
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+            src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!--Email -JS.👇-->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        (function () {
+            /*Initializing of the email- js.*/
+            emailjs.init('LxlZmp2fEwcRX9DGg');
+        })();
+    </script>
+
+</head>
+<nav class="navbar nav-underline navbar-expand-lg bg-dark animate__animated  animate__zoomInUp">
+    <div class="container-fluid">
+        <img alt="" src="assets/logo.png">
+        <button aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#navbarNavDropdown" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active navBarText fs-5 text-white" href="#" id="homeButton">
+                        Home. </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navBarText fs-5 text-white" data-aos="zoom-in" href="#heading1"
+                       id="manageCustomers">
+                        Customers.</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navBarText fs-5 text-white" href="#heading2" id="manageItems">  Items.</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navBarText fs-5 text-white" href="#heading3" id="manageOrders"> Orders
+                    .</a>
+                </li>
+
+            </ul>
+
+
+        </div>
+    </div>
+</nav>
+<main>
+    <h1 class="commonText" data-aos="zoom-in" id="heading1">
+        <mark>Manage Customers.</mark>
+    </h1>
+    <br><br>
+    <!--Customer Manager - Start.-->
+    <div class="buttonContainer">
+        <!-- Button trigger modal for adding a customer - Start.-->
+        <button class="btn btn-primary " data-aos="zoom-in-up" data-bs-target="#addCustomerModal" data-bs-toggle="modal"
+                id="addCustomerButton" type="button">
+            Add a Customer.
+        </button>
+        <!-- Button trigger modal for adding a customer - End.-->
+
+        <!-- Add Customer Modal - Start. -->
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="addCustomerModal"
+             tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 commonText">Enter details of the Customer.</h1>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="cId">Customer ID.</label>
+                            <input class="form-control" id="cId" placeholder="C001" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="cName">Customer Name.</label>
+                            <input class="form-control" id="cName" placeholder="Prabhash Wije" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="cAddress">Customer Address.</label>
+                            <input class="form-control" id="cAddress" placeholder="Kaluthara" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="cSalary">Customer Salary.</label>
+                            <input class="form-control" id="cSalary" placeholder="RS.45000.00" type="text">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="customerAddButton" type="button">Add.</button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close.</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Customer Modal - End. -->
+
+        <!-- Button trigger modal for updating a customer - Start. -->
+        <button class="btn btn-success" data-aos="zoom-in-up" data-bs-target="#updateCustomerModal"
+                data-bs-toggle="modal"
+                id="updateCustomerButton" type="button">
+            Update a Customer.
+        </button>
+        <!-- Button trigger modal for updating a customer - End. -->
+        <!-- Update Customer Modal - Start. -->
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="updateCustomerModal"
+             tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 commonText">Enter details of the customer!</h1>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="cId">Customer ID.</label>
+                            <input class="form-control" id="uCId" placeholder="C001" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="cName">Customer Name.</label>
+                            <input class="form-control" id="uCName" placeholder="Prabhash Wije." type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="cAddress">Customer Address.</label>
+                            <input class="form-control" id="uCAddress" placeholder="Kaluthra" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="cSalary">Customer Salary.</label>
+                            <input class="form-control" id="uCSalary" placeholder="RS.4500.00" type="text">
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="cUpdateButton" type="button">Update.</button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close.</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Button trigger modal for deleting a customer - Start. -->
+        <button class="btn btn-danger " data-aos="zoom-in-up" data-bs-target="#deleteCustomerModal"
+                data-bs-toggle="modal"
+                id="deleteCustomerButton" type="button">
+            Delete a Customer.
+        </button>
+        <!-- Button trigger modal for deleting a customer - End. -->
+        <!-- Delete Customer Modal - Start. -->
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="deleteCustomerModal"
+             tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 commonText">Enter CID of the Customer!.</h1>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="cId" id="dc">Customer ID.</label>
+                            <input class="form-control" id="dCId" placeholder="C001" type="text">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" id="deleteCustomer" type="button">Delete.</button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close.</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Delete Customer Modal - End. -->
+        <!-- Button trigger modal for getting all customers- Start. -->
+        <button class="btn btn-dark" data-aos="zoom-in-up" id="getAllCustomersButton" type="button">Get all customers.
+        </button>
+
+        <!-- Button trigger modal for getting all customers- End. -->
+        <!--Customer search bar - Start.-->
+        <nav class="navbar bg-body-tertiary" data-aos="zoom-in-up" id="customerSearchBar">
+            <div class="container-fluid">
+                <form class="d-flex" role="search">
+                    <input aria-label="Search" class="form-control me-2" id="cidField" placeholder="Type something..."
+                           type="search">
+                    <button class="btn btn-outline-success" id="csButton" type="submit">Search.</button>
+                </form>
+            </div>
+        </nav>
+        <!--Customer search bar - End.-->
+    </div>
+
+    <!--Table for Customers -Start..-->
+    <table class="table table-hover table-dark table-striped " data-aos="zoom-in"
+           id="customerTable">
+        <thead>
+        <tr>
+            <th scope="col">Customer ID.</th>
+            <th scope="col">Customer Name.</th>
+            <th scope="col">Customer Address.</th>
+            <th scope="col">Customer Salary.</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <!--Table for Customers - End.-->
+    <!--Customer Manager - End.-->
+
+    <!--Store Items Manager - Start.-->
+    <h1 class="commonText" data-aos="zoom-in" id="heading2">
+        <mark>Manage Store Items.</mark>
+    </h1>
+    <br><br>
+    <div class="buttonContainer2">
+        <!-- Button trigger modal for adding an item- Start.-->
+        <button class="btn btn-primary " data-aos="zoom-in-up" data-bs-target="#addItemModal" data-bs-toggle="modal"
+                id="addItemButton" type="button">
+            Add an Item.
+        </button>
+        <!-- Button trigger modal for adding an item - End.-->
+
+        <!-- Add Item Modal - Start. -->
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="addItemModal"
+             tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 commonText">Enter details of the Items.</h1>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="iId">Item Code.</label>
+                            <input class="form-control" id="iId" placeholder="IOO1" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="iName">Item Name.</label>
+                            <input class="form-control" id="iName" placeholder="Mooose." type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="iPrice">Item Price.</label>
+                            <input class="form-control" id="iPrice" placeholder="RS.500.00/=" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="iQty">Item QTY.</label>
+                            <input class="form-control" id="iQty" placeholder="1000" type="text">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="itemAddButton" type="button">Add.</button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close.</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Item Modal - End. -->
+
+        <!-- Button trigger modal for updating a Item- Start. -->
+        <button class="btn btn-success" data-aos="zoom-in-up" data-bs-target="#updateItemModal" data-bs-toggle="modal"
+                id="updateItemButton" type="button">
+            Update an Item.
+        </button>
+        <!-- Button trigger modal for updating an item - End. -->
+        <!-- Update Item Modal - Start. -->
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="updateItemModal"
+             tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 commonText">Enter details of the Item!</h1>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" id="updateItems"
+                                type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="uIid">Item Code.</label>
+                            <input class="form-control" id="uIid" placeholder="IOO1" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="uIname">Item Name.</label>
+                            <input class="form-control" id="uIname" placeholder="Moose." type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="uIprice">Item Price.</label>
+                            <input class="form-control" id="uIprice" placeholder="RS.300.00/=" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="uIqty">Item QTY.</label>
+                            <input class="form-control" id="uIqty" placeholder="1000" type="text">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="updatedItemsButton" type="button">Update.</button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close.</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Update Item Modal - End. -->
+        <!-- Button trigger modal for deleting an item - Start. -->
+        <button class="btn btn-danger " data-aos="zoom-in-up" data-bs-target="#deleteItemModal" data-bs-toggle="modal"
+                id="deleteItemModalButton" type="button">
+            Delete an Item.
+        </button>
+        <!-- Button trigger modal for deleting an item - End. -->
+        <!-- Delete Item Modal - Start. -->
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="deleteItemModal"
+             tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 commonText">Enter Item ID of the Item!.</h1>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="iId2">Item ID.</label>
+                            <input class="form-control" id="iId2" placeholder="I001" type="text">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" id="deleteItemButton" type="button">Delete.</button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close.</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Delete Item Modal - End. -->
+        <!-- Button trigger modal for getting all Items- Start. -->
+        <button class="btn btn-dark" data-aos="zoom-in-up" id="getAllItemsButton" type="button">Get all Items.
+        </button>
+
+        <!-- Button trigger modal for getting all Items- End. -->
+        <!--Items search bar - Start.-->
+        <nav class="navbar bg-body-tertiary" data-aos="zoom-in-up" id="itemsSearchBar">
+            <div class="container-fluid">
+                <form class="d-flex" role="search">
+                    <input aria-label="Search" class="form-control me-2" id="itemIdField"
+                           placeholder="Type something..."
+                           type="search">
+                    <button class="btn btn-outline-success" id="itemSearchButton" type="submit">Search.</button>
+                </form>
+            </div>
+        </nav>
+        <!--Items search bar - End.-->
+    </div>
+
+    <!--Table for Item -Start..-->
+    <table class="table table-hover table-dark table-striped" data-aos="zoom-in" id="itemTable">
+        <thead>
+        <tr>
+            <th scope="col">Item ID.</th>
+            <th scope="col">Item Name.</th>
+            <th scope="col">Item Price.</th>
+            <th scope="col">Item QTY.</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <!--Table for Item -End.-->
+    <!--Store Items Manager - End.-->
+    <!--Order Manager - Start.-->
+    <h1 class="commonText" id="heading3">
+        <mark>Manage Orders.</mark>
+    </h1>
+    <div class="buttonContainer3">
+        <!-- Button trigger modal for adding an Order- Start.-->
+        <button class="btn btn-primary " data-aos="zoom-in-up" data-bs-target="#addOrderModal" data-bs-toggle="modal"
+                id="aoButton" type="button">
+            Add an Order.
+        </button>
+        <!-- Button trigger modal for adding an Order - End.-->
+
+        <!-- Add order Modal - Start. -->
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="addOrderModal"
+             tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 commonText">Enter details of the Order.</h1>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="oId">Order ID.</label>
+                            <input class="form-control" id="oId" placeholder="OOO1" type="text">
+                        </div>
+                        <div class="dropdown">
+                            <button aria-expanded="false" class="commonText btn btn-secondary dropdown-toggle"
+                                    data-bs-toggle="dropdown"
+                                    id="cIdButton" type="button">
+                                Customer ID's.
+                            </button>
+                            <ul class="dropdown-menu" id="cIdDropdown">
+
+                            </ul>
+                        </div>
+                        <br>
+                        <div class="dropdown">
+                            <button aria-expanded="false" class="commonText btn btn-secondary dropdown-toggle"
+                                    data-bs-toggle="dropdown"
+                                    id="iIdButton" type="button">
+                                Item ID's.
+                            </button>
+                            <ul class="dropdown-menu" id="iIdDropDown">
+
+                            </ul>
+                        </div>
+                        <br>
+                        <div class="dropdown">
+                            <button aria-expanded="false" class="commonText btn btn-secondary dropdown-toggle"
+                                    data-bs-toggle="dropdown"
+                                    id="iNameButton" type="button">
+                                Item Names.
+                            </button>
+                            <ul class="dropdown-menu" id="iNameDropDown">
+
+                            </ul>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="iPriceField">Item Price.</label>
+                            <input class="form-control" id="iPriceField" placeholder="RS:1000/=" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="iQtyField">Item QTY.</label>
+                            <input class="form-control" id="iQtyField" placeholder="1000" type="text">
+                        </div>
+                        <label class="form-label commonText" for="oId">Customer Email.</label>
+                        <input class="form-control" id="customerEmail" placeholder="damian@ordercloud.com" type="text">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="addOrderButton" type="button">Add.</button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close.</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Order Modal - End. -->
+
+        <!-- Button trigger modal for updating a order- Start. -->
+        <button class="btn btn-success" data-aos="zoom-in-up" data-bs-target="#updateOrderModal" data-bs-toggle="modal"
+                id="updateOrderButton" type="button">
+            Update an Order.
+        </button>
+        <!-- Button trigger modal for updating an order - End. -->
+        <!-- Update Order Modal - Start. -->
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="updateOrderModal"
+             tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 commonText">Enter details of the Item!</h1>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="oId">Order ID.</label>
+                            <input class="form-control" id="uOId" placeholder="OOO1" type="text">
+                        </div>
+                        <div class="dropdown">
+                            <button aria-expanded="false" class="commonText btn btn-secondary dropdown-toggle"
+                                    data-bs-toggle="dropdown" id="uCustomerIds" type="button">
+                                Customer ID's.
+                            </button>
+                            <ul class="dropdown-menu" id="uCidDropDown">
+
+                            </ul>
+                        </div>
+                        <br>
+                        <div class="dropdown">
+                            <button aria-expanded="false" class="commonText btn btn-secondary dropdown-toggle"
+                                    data-bs-toggle="dropdown" id="uItemIds" type="button">
+                                Item ID's.
+                            </button>
+                            <ul class="dropdown-menu" id="uIidDropDown">
+
+                            </ul>
+                        </div>
+                        <br>
+                        <div class="dropdown">
+                            <button aria-expanded="false" class="commonText btn btn-secondary dropdown-toggle"
+                                    data-bs-toggle="dropdown" id="uItemNames" type="button">
+                                Item Names.
+                            </button>
+                            <ul class="dropdown-menu" id="uInDropDown">
+
+                            </ul>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="upriceField">Item Price.</label>
+                            <input class="form-control" id="upriceField" placeholder="RS:1000/=" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="uqtyField">Item QTY.</label>
+                            <input class="form-control" id="uqtyField" placeholder="1000" type="text">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="updateOrdersButton" type="button">Update.</button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close.</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Update Order Modal - End. -->
+        <!-- Button trigger modal for deleting an order - Start. -->
+        <button class="btn btn-danger " data-aos="zoom-in-up" data-bs-target="#deleteOrderModal" data-bs-toggle="modal" id="deleteOrderModalButton"
+                type="button">
+            Delete an Order.
+        </button>
+        <!-- Button trigger modal for deleting an order - End. -->
+        <!-- Delete Order Modal - Start. -->
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="deleteOrderModal"
+             tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 commonText">Enter Order ID!.</h1>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label commonText" for="oId2">Order ID.</label>
+                            <input class="form-control" id="oId2" placeholder="0001" type="text">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" id="deleteOrderButton" type="button">Delete.</button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close.</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Delete Order Modal - End. -->
+        <!-- Button trigger modal for getting all Orders- Start. -->
+        <button class="btn btn-dark" data-aos="zoom-in-up" id="getAllOrdersButton" type="button">Get all Orders.
+        </button>
+
+        <!-- Button trigger modal for getting all Orders.- End. -->
+        <!--Order search bar - Start.-->
+        <nav class="navbar bg-body-tertiary" data-aos="zoom-in-up" id="ordersSearchBar">
+            <div class="container-fluid">
+                <form class="d-flex" role="search">
+                    <input aria-label="Search" class="form-control me-2" id="oidField" placeholder="Type something..."
+                           type="search">
+                    <button class="btn btn-outline-success" id="searchOrderButton" type="submit">Search.</button>
+                </form>
+            </div>
+        </nav>
+        <!--Order search bar - End.-->
+    </div>
+
+    <!--Table for Order -Start..-->
+    <table class="table table-hover table-dark table-striped" data-aos="zoom-in" id="orderTable">
+        <thead>
+        <tr>
+            <th scope="col">Order ID.</th>
+            <th scope="col">Customer ID.</th>
+            <th scope="col">Item ID.</th>
+            <th scope="col">Item Name.</th>
+            <th scope="col">Item Price.</th>
+            <th scope="col">Item QTY.</th>
+            <th scope="col">Total (LKR).</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <!--Table for Orders -End.-->
+    <!--Orders Manager - End.-->
+    <!-- Button trigger modal -->
+    <button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal" id="showInfo" type="button">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -. -->
+    <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 commonText" id="exampleModalLabel">Customer Details.</h1>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body commonText" id="infoBody">
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary commonText" data-bs-dismiss="modal" type="button">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--BootStrap 5 JS.-->
+    <script crossorigin="anonymous"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!--AOS - Animate on scroll library.(JS)(https://github.com/michalsnik/aos) or (https://michalsnik.github.io/aos/)👇-->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!--Initializing AOS.👇-->
+    <script>
+        AOS.init();
+    </script>
+    <!--Sweet Alert.👇-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!--Alerts.👇-->
+    <script src="controller/AlertController.js" type="module"></script>
+    <!--DB.👇-->
+    <script src="db/LocalStorageDB.js" type="module"></script>
+    <!--Models.👇-->
+    <script src="model/Customer.js" type="module"></script>
+    <script src="model/Item.js" type="module"></script>
+    <script src="model/Order.js" type="module"></script>
+    <!--ScreenController.👇-->
+    <script src="controller/ScreenController.js" type="module"></script>
+    <!--Controllers.👇-->
+    <script src="controller/CustomerController.js" type="module"></script>
+    <script src="controller/ItemController.js" type="module"></script>
+    <script src="controller/OrderController.js" type="module"></script>
+
+
+</main>
+
+</html>

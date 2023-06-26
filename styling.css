@@ -1,0 +1,238 @@
+body{
+    background-image: url("assets/Beige and White Minimalist Clothing Slideshow Video.gif");
+}
+img{
+    height: 100px;
+    width: 200px;
+}
+.commonText{
+    font-family: 'Tilt Warp', cursive;
+    font-weight: bold;
+
+}
+.navBarText{
+    position: relative;
+    left: 500px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Tilt Warp', cursive;
+}
+.navbar-nav > li{
+    padding-left: 20px;
+}
+.navbar-toggler-icon{
+    background-color: white;
+}
+#lsToggle{
+    position: relative;
+    left: 50px;
+    top: 50px;
+}
+.lsDropDown{
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Tilt Warp', cursive;
+}
+#heading1{
+    text-align: center;
+    position: relative;
+    top: 150px;
+
+}
+#heading2{
+    text-align: center;
+    position: relative;
+    top: 100px;
+
+}
+#heading3{
+    text-align: center;
+    position: relative;
+    top: 800px;
+
+}
+
+#heading4{
+    text-align: center;
+    position: relative;
+    top: 1100px;
+}
+.modal-header{
+    margin: auto;
+    background-color: lightblue;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+}
+.buttonContainer{
+    display: flex;
+    position: relative;
+    top: 150px;
+    justify-content: space-between;
+}
+#customerTable{
+    position: relative;
+    top: 200px;
+}
+.buttonContainer2{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    top: 500px;
+}
+.buttonContainer3{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    top: 700px;
+}
+#itemTable{
+    position: relative;
+    top: 600px;
+}
+.buttonContainer3{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    top: 850px;
+}
+#orderTable{
+    position: relative;
+    top: 900px;
+}
+.invoiceContainer{
+    display: flex;
+    position: relative;
+    top: 1200px;
+
+}
+.commonHeadings{
+    position: relative;
+    text-align: center;
+    top: 10px;
+    text-decoration: underline;
+
+}
+.invoiceDetails{
+    position: relative;
+    background: white;
+    left:20px;
+    height: 500px;
+    width: 500px;
+    border: 5px solid black;
+
+}
+.itemDetails{
+    position: relative;
+    background: white;
+    height: 500px;
+    width: 500px;
+    border: 5px solid black;
+    left: 60px;
+}
+.totalDetails{
+    position: relative;
+    background: white;
+    height: 500px;
+    width: 500px;
+    border: 5px solid black;
+    left: 80px;
+}
+.adjustPosition{
+    position: relative;
+    left: 25px;
+}
+#b1{
+    position: relative;
+    left:250px;
+    top: 20px;
+}
+#b2{
+    position: relative;
+    left:250px;
+    top: 20px;
+}
+
+
+
+@media screen and (max-width:1530px) {
+    body{
+        overflow-x: auto;
+    }
+    .navBarText{
+        left: 0;
+    }
+    #lsToggle{
+        left: 0;
+        top:0;
+    }
+    .buttonContainer{
+        flex-direction: column;
+    }
+    #addCustomerButton{
+        margin-bottom: 20px;
+    }
+    #updateCustomerButton{
+        margin-bottom: 20px;
+    }
+    #deleteCustomerButton{
+        margin-bottom: 20px;
+    }
+    #getAllCustomersButton{
+        margin-bottom: 20px;
+    }
+    #customerSearchBar{
+        margin-bottom: 20px;
+    }
+    .buttonContainer2{
+        flex-direction: column;
+    }
+    #addItemButton{
+        margin-bottom: 20px;
+    }
+    #updateItemButton{
+        margin-bottom: 20px;
+    }
+    #deleteItemButton{
+        margin-bottom: 20px;
+    }
+    #getAllItemsButton{
+        margin-bottom: 20px;
+    }
+    #itemsSearchBar{
+        margin-bottom: 20px;
+    }
+    .buttonContainer3{
+        flex-direction: column;
+    }
+    #addOrderButton{
+        margin-bottom: 20px;
+    }
+    #updateOrderButton{
+        margin-bottom: 20px;
+    }
+    #deleteOrderButton{
+        margin-bottom: 20px;
+    }
+    #getAllOrdersButton{
+        margin-bottom: 20px;
+    }
+    #ordersSearchBar{
+        margin-bottom: 20px;
+    }
+    .invoiceContainer{
+        flex-direction: column;
+    }
+    .invoiceDetails{
+        left: 0;
+        margin-bottom: 20px;
+    }
+    .itemDetails{
+        left: 0;
+        margin-bottom: 20px;
+    }
+    .totalDetails{
+        left: 0;
+        margin-bottom: 20px;
+    }
+
+}

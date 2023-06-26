@@ -1,7 +1,7 @@
 import {custArray} from "./CustomerController.js";
 import {itemArray, ItemController, itemData} from "./ItemController.js";
 import {Order} from "../model/Order.js";
-import {AlertController} from "./AlertController.js";
+/*import {AlertController} from "./AlertController.js";*/
 import {LocalStorageDB} from "../db/LocalStorageDB.js";
 
 export class OrderController {

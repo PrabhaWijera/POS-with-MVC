@@ -1,5 +1,5 @@
 import {Customer} from "../model/Customer.js";
-import {AlertController} from "./AlertController.js";
+/*import {AlertController} from "./AlertController.js";*/
 import {LocalStorageDB} from "../db/LocalStorageDB.js";
 
 

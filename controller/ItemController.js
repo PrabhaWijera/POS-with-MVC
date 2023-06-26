@@ -1,6 +1,6 @@
 import {Item} from "../model/Item.js";
 import {LocalStorageDB} from "../db/LocalStorageDB.js";
-import {AlertController} from "./AlertController.js";
+/*import {AlertController} from "./AlertController.js";*/
 
 export class ItemController {
     constructor() {

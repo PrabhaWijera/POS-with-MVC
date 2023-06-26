@@ -1,3 +1,4 @@
+/*
 export class AlertController{
     constructor(){
         this.showAlert.bind(this);
@@ -14,4 +15,4 @@ export class AlertController{
     }
 
 }
-new AlertController();
+new AlertController();*/
